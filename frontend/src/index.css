@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: #fdf2f8;
+}
+
+/* ── Ruleta: card eliminations ── */
+@keyframes pop-explode {
+  0%   { transform: scale(1)    rotate(0deg);   opacity: 1; }
+  20%  { transform: scale(1.35) rotate(-6deg);  opacity: 0.9; }
+  55%  { transform: scale(1.1)  rotate(5deg);   opacity: 0.5; }
+  100% { transform: scale(0)    rotate(15deg);  opacity: 0; }
+}
+
+/* ── Ruleta: highlighted card heartbeat ── */
+@keyframes card-hot {
+  0%, 100% { transform: scale(1.06); }
+  50%       { transform: scale(1.12); }
+}
+
+/* ── Ruleta: winner circle entrance ── */
+@keyframes winner-entrance {
+  0%   { transform: scale(0.2) rotate(-12deg); opacity: 0; }
+  55%  { transform: scale(1.18) rotate(3deg);  opacity: 1; }
+  75%  { transform: scale(0.95) rotate(-1deg); }
+  100% { transform: scale(1)    rotate(0deg);  opacity: 1; }
+}
+
+/* ── Ruleta: winner circle floating ── */
+@keyframes winner-float {
+  0%, 100% { transform: translateY(0px)  scale(1); }
+  50%       { transform: translateY(-10px) scale(1.03); }
+}
+
+/* ── Ruleta: winner pulse ring ── */
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0   rgba(251,113,133,0.7), 0 0 0 0   rgba(192,132,252,0.4); }
+  70%  { box-shadow: 0 0 0 22px rgba(251,113,133,0),  0 0 0 44px rgba(192,132,252,0); }
+  100% { box-shadow: 0 0 0 0   rgba(251,113,133,0),  0 0 0 0   rgba(192,132,252,0); }
+}
+
+/* ── Ruleta: winner badge bounce-in ── */
+@keyframes badge-in {
+  0%   { transform: translateY(20px); opacity: 0; }
+  60%  { transform: translateY(-4px); }
+  100% { transform: translateY(0);    opacity: 1; }
+}
+
+@layer utilities {
+  .animate-pop-explode {
+    animation: pop-explode 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards;
+  }
+  .animate-card-hot {
+    animation: card-hot 0.45s ease-in-out infinite;
+  }
+  .animate-winner-entrance {
+    animation: winner-entrance 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+  .animate-winner-float {
+    animation: winner-float 3s ease-in-out infinite;
+  }
+  .animate-pulse-ring {
+    animation: pulse-ring 1.6s ease-out infinite;
+  }
+  .animate-badge-in {
+    animation: badge-in 0.5s ease-out forwards;
+  }
+}
